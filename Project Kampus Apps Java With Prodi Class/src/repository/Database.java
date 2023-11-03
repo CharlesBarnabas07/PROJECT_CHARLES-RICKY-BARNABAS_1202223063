@@ -63,5 +63,22 @@ public class Database {
             }
             return null;
         }
+
+        public void delete(String idProdi) {
+            Prodi prodiToRemove = null;
+            for (Prodi prodi : db.tables.dataProdi) {
+                if (prodi.getId().equals(idProdi)) {
+                    prodiToRemove = prodi;
+                    break;
+                }
+            }
+
+            if (prodiToRemove != null) {
+                db.tables.dataProdi.remove(prodiToRemove);
+                db.commit();
+            } else {
+                System.out.println("* Data Prodi dengan ID " + idProdi + " tidak ditemukan *");
+            }
+        }
     }
 }

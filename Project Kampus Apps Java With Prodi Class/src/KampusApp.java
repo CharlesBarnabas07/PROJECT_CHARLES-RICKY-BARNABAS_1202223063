@@ -28,6 +28,8 @@ public class KampusApp {
         System.out.println("4 -> Cari Data Mahasiswa");
         System.out.println("5 -> Tampilkan Semua Data Mahasiswa");
         System.out.println("6 -> Tambah Data Prodi");
+        System.out.println("7 -> Hapus Data Prodi");
+        System.out.println("8 -> Tampil Data Prodi");
         System.out.println("0 -> Keluar Aplikasi");
         System.out.print("Silahkan masukan menu yang dipilih: ");
         int menuYangDipilih = scanner.nextInt();
@@ -50,6 +52,12 @@ public class KampusApp {
             break;
             case 6:
             menuTambahProdi();
+            break;
+            case 7:
+            menuHapusProdi();
+            break;
+            case 8:
+            menuTampilSemuaProdi();
             break;
             default: {
                 System.out.print("* Terimakasih sudah menggunakan Aplikasi Kampus *");
@@ -137,13 +145,18 @@ public class KampusApp {
 
     public void menuTampilSemua() {
         System.out.println("----- Semua Data Mahasiswa -----");
-        for (Mahasiswa mahasiswa : db.getTables().dataMahasiswa) {
+        if (db.getTables().dataMahasiswa == null || db.getTables().dataMahasiswa.isEmpty()) {
+            System.out.println("Data Mahasiswa Kosong, silahkan tambah data!");
+        }
+        else{
+            for (Mahasiswa mahasiswa : db.getTables().dataMahasiswa) {
             System.out.println("* NIM: " + mahasiswa.getNim() + " *");
             System.out.println("* Nama: " + mahasiswa.getNama() + " *");
-            if (mahasiswa.getProdi() != null) {
-                System.out.println("* ID Prodi: " + mahasiswa.getProdi().getId() + " *");
-                System.out.println("* Nama Prodi: " + mahasiswa.getProdi().getNama() + " *");
-        }
+                if (mahasiswa.getProdi() != null) {
+                    System.out.println("* ID Prodi: " + mahasiswa.getProdi().getId() + " *");
+                    System.out.println("* Nama Prodi: " + mahasiswa.getProdi().getNama() + " *");
+                }
+            }
         System.out.println("-----------------------------");
         }
         System.out.println("Tekan Enter untuk melanjutkan...");
@@ -162,6 +175,33 @@ public class KampusApp {
         db.prodiTbl.create(prodi);
 
         System.out.println("* Prodi berhasil ditambahkan *");
+        System.out.println("Tekan Enter untuk melanjutkan...");
+        scanner.nextLine();
+        showMenu();
+    }
+
+    public void menuHapusProdi() {
+        System.out.println("----- Menu Hapus Data Prodi -----");
+        System.out.print("Masukkan ID Prodi: ");
+        String idProdi = scanner.nextLine();
+        db.prodiTbl.delete(idProdi);
+        System.out.println("* Data Prodi berhasil dihapus *");
+        System.out.println("Tekan Enter untuk melanjutkan...");
+        scanner.nextLine();
+        showMenu();
+    }
+
+    public void menuTampilSemuaProdi() {
+        System.out.println("----- Semua Data Prodi -----");
+        if (db.getTables().dataProdi == null || db.getTables().dataProdi.isEmpty()) {
+            System.out.println("Data Prodi Kosong, silahkan tambah data!");
+        } else {
+            for (Prodi prodi : db.getTables().dataProdi) {
+                System.out.println("* ID Prodi: " + prodi.getId() + " *");
+                System.out.println("* Nama Prodi: " + prodi.getNama() + " *");
+            }
+            System.out.println("-----------------------------");
+        }
         System.out.println("Tekan Enter untuk melanjutkan...");
         scanner.nextLine();
         showMenu();
