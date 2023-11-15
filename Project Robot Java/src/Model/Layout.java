@@ -9,7 +9,6 @@ public class Layout {
     }
 
     private int maxY = 0;
-
     public int getMaxY() {
         return maxY;
     }

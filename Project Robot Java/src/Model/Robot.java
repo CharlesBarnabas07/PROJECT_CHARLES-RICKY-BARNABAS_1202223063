@@ -7,7 +7,6 @@ public class Robot {
     }
 
     private Position position;
-
     public Position getPosition() {
         return position;
     }
