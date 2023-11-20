@@ -39,6 +39,7 @@ public class RobotApp {
 
             //inisialisasi berapa langkah jalan dan arah jalan
             int langkahjalan = 0;
+            //merubah wasd menjadi angka yang dapat diatur berapa langkahnya
             String arahjalan = instruction.substring(0,1);
             if (instruction != null && !instruction.equals("x")) {
                 langkahjalan = Integer.parseInt(instruction.substring(1));
