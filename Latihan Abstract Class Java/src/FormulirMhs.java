@@ -6,6 +6,7 @@ public class FormulirMhs extends BaseFormulir {
     @Override
     void caraPembayaran() {
         System.out.println("Cara Pembayaran Mahasiswa");
+        super.caraPembayaran();
     }
 
     @Override

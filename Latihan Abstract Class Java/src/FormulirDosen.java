@@ -4,7 +4,7 @@ public class FormulirDosen extends BaseFormulir{
     @Override
     void caraPembayaran() {
         System.out.println("Cara Pembayaran Dosen");
-        super.caraPembayaran();
+        super.caraPembayaran() ;
     }
 
     @Override

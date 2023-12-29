@@ -90,26 +90,26 @@ public class KampusApp {
     }
 
     public void menuUbah() {
-    System.out.println("----- Menu Ubah Data Mahasiswa -----");
-    System.out.print("Masukan NIM Sebelumnya: ");
-    String nimLama = scanner.nextLine();
-    System.out.print("Masukan NIM: ");
-    String nimBaru = scanner.nextLine();
-    System.out.print("Masukan Nama: ");
-    String nama = scanner.nextLine();
-    System.out.print("Masukkan ID Prodi: ");
-    String idProdi = scanner.nextLine();
-    Prodi prodi = db.prodiTbl.getProdiById(idProdi);
-    if (prodi == null) {
-        System.out.println("* ID Prodi tidak ditemukan. Tambahkan Prodi terlebih dahulu *");
-    } else {
-        Mahasiswa mahasiswa = new Mahasiswa(nimBaru, nama, prodi);
-        db.mahasiswaTbl.update(nimLama, mahasiswa);
-        System.out.println("* Data Mahasiswa berhasil diubah *");
-    }
-    System.out.println("Tekan Enter untuk melanjutkan...");
-    scanner.nextLine();
-    showMenu();
+        System.out.println("----- Menu Ubah Data Mahasiswa -----");
+        System.out.print("Masukan NIM Sebelumnya: ");
+        String nimLama = scanner.nextLine();
+        System.out.print("Masukan NIM: ");
+        String nimBaru = scanner.nextLine();
+        System.out.print("Masukan Nama: ");
+        String nama = scanner.nextLine();
+        System.out.print("Masukkan ID Prodi: ");
+        String idProdi = scanner.nextLine();
+        Prodi prodi = db.prodiTbl.getProdiById(idProdi);
+        if (prodi == null) {
+            System.out.println("* ID Prodi tidak ditemukan. Tambahkan Prodi terlebih dahulu *");
+        } else {
+            Mahasiswa mahasiswa = new Mahasiswa(nimBaru, nama, prodi);
+            db.mahasiswaTbl.update(nimLama, mahasiswa);
+            System.out.println("* Data Mahasiswa berhasil diubah *");
+        }
+        System.out.println("Tekan Enter untuk melanjutkan...");
+        scanner.nextLine();
+        showMenu();
     }
 
     public void menuCari(){
